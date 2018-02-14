@@ -47,8 +47,12 @@ class UsersController extends Controller
     
     //个人信息显示
      public function show(User $user)
-    {
-        return view('users.show', compact('user'));
+    {   
+        $statuses=$user->statuses()
+                        ->orderBy('created_at', 'desc')
+                        ->paginate(30);
+                        //compact方法可以同时接收多个参数
+        return view('users.show', compact('user','statuses'));
     }
 
     //处理数据
