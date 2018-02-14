@@ -26,3 +26,5 @@ Route::delete('logout', 'SessionsController@destroy')->name('logout');
 
 //更新信息
 Route::get('/users/{user}/edit', 'UsersController@edit')->name('users.edit');
+//找回密码邮件发送
+Route::get('signup/confirm/{token}', 'UsersController@confirmEmail')->name('confirm_email');
